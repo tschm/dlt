@@ -1,2 +1,2 @@
 mod==0.3.0
-fastecdsa==2.1.5
+fastecdsa==2.3.2
