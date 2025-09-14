@@ -1,8 +1,7 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "marimo==0.15.3",
-#     "hashlib"
+#     "marimo==0.15.3"
 # ]
 # ///
 
