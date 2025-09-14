@@ -6,13 +6,14 @@
 # ]
 # ///
 
+"""Simplified implementation of digital signatures using the fastecdsa library."""
+
 import marimo
 
 __generated_with = "0.15.3"
 app = marimo.App()
 
 with app.setup:
-    import marimo as mo
     import fastecdsa.keys as keys
     from fastecdsa import ecdsa
     from fastecdsa.curve import secp256k1 as curve

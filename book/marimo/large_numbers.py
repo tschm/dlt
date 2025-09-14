@@ -8,16 +8,18 @@
 # ]
 # ///
 
+"""Exploration of large numbers, binary/hexadecimal representations, and their applications in cryptography."""
+
 import marimo
 
 __generated_with = "0.15.3"
 app = marimo.App()
 
 with app.setup:
+    import marimo as mo
     import matplotlib.pyplot as plt
     import numpy as np
     import pandas as pd
-    import marimo as mo
 
     plt.style.use("seaborn-v0_8-whitegrid")
 
@@ -53,7 +55,8 @@ def _():
     mo.md(
         r"""
         I guess it's fair to say that powers of $2$ grow very fast. This is exponential growth in practice...
-        We would need approximately $750000$ superships, each packed with $20000$ containers, each container packed with $25$ tons of rice.
+        We would need approximately $750000$ superships, each packed with $20000$ containers,
+        each container packed with $25$ tons of rice.
 
         Annual production of rice in tons is $700 000 000$
         We would produce for the next 500 years at the current rate...

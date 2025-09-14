@@ -7,6 +7,8 @@
 # ]
 # ///
 
+"""Implementation of digital signatures using elliptic curve cryptography."""
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -33,6 +35,7 @@ def _():
             int: The numeric representation of the SHA-256 hash of the input string
         """
         return int(hashlib.sha256(hashstr.encode()).hexdigest(), 16)
+
     return (encryptstring,)
 
 
@@ -64,14 +67,14 @@ def _():
     i = keys.gen_private_key(curve)
     print(type(i))
     # nonce on elliptic curve
-    P = curve.G * i
-    return P, i
+    p_point = curve.G * i
+    return p_point, i
 
 
 @app.cell
-def _(P, encryptstring, i, message, n, privatekey):
+def _(p_point, encryptstring, i, message, n, privatekey):
     # compute the signature
-    r = Mod(P.x, n)
+    r = Mod(p_point.x, n)
     inv_i = Mod(i, n).inverse
 
     s = (inv_i * (encryptstring(message) + r * privatekey))._value

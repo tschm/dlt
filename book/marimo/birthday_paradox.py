@@ -7,6 +7,8 @@
 # ]
 # ///
 
+"""Birthday paradox simulation using Monte Carlo methods to demonstrate probability concepts."""
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -27,7 +29,8 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        We are solving the birthday problem using a Monte-Carlo simulation, e.g. given a class with $m$ members we run $n$ experiments and count those of them with duplicates.
+        We are solving the birthday problem using a Monte-Carlo simulation, e.g. given a class with $m$ members
+        we run $n$ experiments and count those of them with duplicates.
         """
     )
     return
@@ -48,7 +51,6 @@ def _(np):
         # that's a standard trick in computer science, pump all entries of an array/vector/etc. into a set and count
         return not (len(x) == len(set(x)))
 
-
     def monte_carlo(m=5, n=100, s=np.arange(1, 366)):
         """Perform Monte Carlo simulation for the birthday paradox problem.
 
@@ -64,6 +66,7 @@ def _(np):
         a = np.random.choice(s, (n, m))
         # apply the function has_duplicates for each row
         return sum(np.apply_along_axis(func1d=has_duplicates, arr=a, axis=1)) / a.shape[0]
+
     return (monte_carlo,)
 
 
@@ -101,6 +104,7 @@ def _():
 @app.cell
 def _():
     import marimo as mo
+
     return (mo,)
 
 

@@ -5,6 +5,8 @@
 # ]
 # ///
 
+"""Implementation of a simple blockchain with blocks linked by cryptographic hashes."""
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -15,7 +17,6 @@ app = marimo.App()
 def _():
     import json
     from hashlib import sha256
-
 
     class Block:
         """Represents a block in a blockchain with message, timestamp, and reference to previous block."""
@@ -41,7 +42,6 @@ def _():
             """
             x = {"message": self.message, "time": self.time, "reference": self.reference}
             return sha256(json.dumps(x).encode()).hexdigest()
-
 
     class Chain:
         """Represents a blockchain - a sequence of linked blocks."""
@@ -95,6 +95,7 @@ def _():
                     return False
 
             return True
+
     return (Chain,)
 
 

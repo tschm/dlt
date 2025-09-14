@@ -6,6 +6,8 @@
 # ]
 # ///
 
+"""Demonstration of public-private key cryptography using elliptic curve cryptography."""
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -13,7 +15,6 @@ app = marimo.App()
 
 with app.setup:
     from fastecdsa import curve, keys
-    import marimo as mo
 
 
 @app.cell
@@ -27,7 +28,6 @@ def _():
 def _(private_key):
     public_key = keys.get_public_key(private_key, curve.P521)
     return (public_key,)
-
 
 
 @app.cell

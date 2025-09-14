@@ -7,6 +7,8 @@
 # ]
 # ///
 
+"""Interactive demonstration of the Diffie-Hellman key exchange protocol and modular arithmetic."""
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -15,6 +17,7 @@ app = marimo.App()
 with app.setup:
     import numpy as np
     import pandas as pd
+
 
 @app.cell
 def _():
@@ -28,18 +31,19 @@ def _():
                 n: Upper bound for the random secret (exclusive)
             """
             self.__secret = np.random.choice(np.arange(1, n))
+
     return Person
 
 
 @app.cell
 def _(Person):
-    alice = Person(5)
+    Person(5)
     return
 
 
 @app.cell
 def _(Person):
-    bob = Person(5)
+    Person(5)
     return
 
 
@@ -59,7 +63,6 @@ def _():
 def _():
     # Pick a prime number
     p = 7
-    n = 3
     return (p,)
 
 

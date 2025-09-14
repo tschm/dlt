@@ -5,6 +5,8 @@
 # ]
 # ///
 
+"""Demonstration of cryptographic hash functions using SHA-256."""
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -12,7 +14,7 @@ app = marimo.App()
 
 with app.setup:
     import hashlib
-    import marimo as mo
+
 
 @app.cell
 def _():

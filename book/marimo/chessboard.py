@@ -6,14 +6,16 @@
 # ]
 # ///
 
+"""Demonstration of the chessboard problem and binary/hexadecimal number representations."""
+
 import marimo
 
 __generated_with = "0.15.3"
 app = marimo.App()
 
 with app.setup:
-    from mod import Mod
-    import marimo as mo
+    pass
+
 
 @app.cell(hide_code=True)
 def _(mo):
@@ -60,7 +62,6 @@ def _():
 def _(Mod):
     Mod(11, 5)
     return
-
 
 
 if __name__ == "__main__":
