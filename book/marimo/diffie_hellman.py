@@ -45,7 +45,7 @@ def _(Person):
 
 @app.cell
 def _():
-    np.random.choose(5)
+    np.random.choice(5)
     return
 
 
