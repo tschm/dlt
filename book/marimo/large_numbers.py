@@ -3,7 +3,7 @@
 # dependencies = [
 #     "marimo==0.15.3",
 #     "numpy==2.2.3",
-#     "pandas>2.0
+#     "pandas>2.0"
 # ]
 # ///
 
