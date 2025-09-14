@@ -1,7 +1,8 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "marimo==0.15.3"
+#     "marimo==0.15.3",
+#     "fastecdsa==3.0.1"
 # ]
 # ///
 
@@ -11,7 +12,6 @@ __generated_with = "0.15.3"
 app = marimo.App()
 
 with app.setup:
-    import hashlib
     import marimo as mo
     import fastecdsa.keys as keys
     from fastecdsa import ecdsa
