@@ -1,35 +1,42 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "marimo==0.15.3",
+#     "numpy==2.2.3",
+#     "pandas>2.0
+# ]
+# ///
+
 import marimo
 
 __generated_with = "0.15.3"
 app = marimo.App()
 
-
-@app.cell
-def _():
+with app.setup:
     import matplotlib.pyplot as plt
     import numpy as np
     import pandas as pd
+    import marimo as mo
 
     plt.style.use("seaborn-whitegrid")
-    return np, pd
 
 
 @app.cell
-def _(np):
+def _():
     # be careful here, the last element is never included
     np.arange(0, 5)
     return
 
 
 @app.cell
-def _(np):
+def _():
     # first notice how this leads to an overflow (without any warning)
     np.power(2, np.arange(0, 65))
     return
 
 
 @app.cell
-def _(np):
+def _():
     _grains = np.sum(np.power(2.0, np.arange(0, 256)))
     print(_grains)
     n = 20000 * 25 * 1000 * 50000.0
@@ -41,7 +48,7 @@ def _(np):
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def _():
     mo.md(
         r"""
         I guess it's fair to say that powers of $2$ grow very fast. This is exponential growth in practice...
@@ -55,13 +62,13 @@ def _(mo):
 
 
 @app.cell
-def _(np):
+def _():
     (np.power(2.0, 64) - 1) / (50000 * 1000 * 700000000)
     return
 
 
 @app.cell
-def _(np):
+def _():
     _grains = np.power(2, 4) - 1
     print(_grains)
     print(hex(_grains))
@@ -83,7 +90,7 @@ def _(integer):
 
 
 @app.cell
-def _(np, pd):
+def _():
     frame = pd.DataFrame(index=np.arange(0, 16))
     frame["binary"] = pd.Series({a: format(a, "0>4b") for a in frame.index})
     frame["hexadecimal"] = pd.Series({a: format(a, "0>1x") for a in frame.index})
@@ -125,12 +132,6 @@ def _():
     # that problem is already hard enough...
     # All collisions for simpler hash functions have been found using a birthday attack...
     return
-
-
-@app.cell
-def _():
-    import marimo as mo
-    return (mo,)
 
 
 if __name__ == "__main__":
