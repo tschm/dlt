@@ -19,7 +19,7 @@ def _():
     import matplotlib.pyplot as plt
     import numpy as np
 
-    plt.style.use("seaborn-whitegrid")
+    plt.style.use("seaborn-v0_8-whitegrid")
     return np, plt
 
 

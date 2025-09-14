@@ -19,7 +19,7 @@ with app.setup:
     import pandas as pd
     import marimo as mo
 
-    plt.style.use("seaborn-whitegrid")
+    plt.style.use("seaborn-v0_8-whitegrid")
 
 
 @app.cell
