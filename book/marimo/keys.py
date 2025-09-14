@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "marimo==0.15.3"
+#     "marimo==0.15.3",
 #     "fastecdsa==3.0.1"
 # ]
 # ///
