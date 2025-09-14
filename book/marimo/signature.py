@@ -2,7 +2,6 @@
 # requires-python = ">=3.12"
 # dependencies = [
 #     "marimo==0.15.3",
-#     "cryptography>=45.0.0",
 #     "mod==0.3.0"
 # ]
 # ///
