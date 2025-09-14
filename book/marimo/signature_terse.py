@@ -12,14 +12,17 @@ import marimo
 __generated_with = "0.15.3"
 app = marimo.App()
 
+with app.setup:
+    import hashlib
+    import marimo as mo
+    import fastecdsa.keys as keys
+    from fastecdsa import ecdsa
+    from fastecdsa.curve import secp256k1 as curve
+
 
 @app.cell
 def _():
     from hashlib import sha256
-
-    import fastecdsa.keys as keys
-    from fastecdsa import ecdsa
-    from fastecdsa.curve import secp256k1 as curve
 
     private_key = keys.gen_private_key(curve)
     public_key = keys.get_public_key(private_key, curve)
