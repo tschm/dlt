@@ -1,29 +1,32 @@
-#!make
-PROJECT_VERSION := 0.3.2
+# Colors for pretty output
+BLUE := \033[36m
+BOLD := \033[1m
+GREEN := \033[32m
+RESET := \033[0m
 
-SHELL := /bin/bash
+.DEFAULT_GOAL := help
 
-.PHONY: help build jupyter tag
+.PHONY: build clean book check
 
+install: ## install
+	task build:install
 
-.DEFAULT: help
+clean: ## clean
+	task cleanup:clean
 
-help:
-	@echo "make build"
-	@echo "       Build the docker image."
-	@echo "make jupyter"
-	@echo "       Start the Jupyter server."
-	@echo "make tag"
-	@echo "       Make a tag on Github."
+test: install ## run all tests
+	task docs:test
 
+book: test ## compile the companion book
+	task docs:docs
+	task docs:marimushka
+	task docs:book
 
-build:
-	docker-compose build jupyter
+check: install ## check the pre-commit hooks, the linting and deptry
+	task quality:check
 
-jupyter: build
-	@echo "http://localhost:8888"
-	docker-compose up jupyter
-
-tag:
-	git tag -a ${PROJECT_VERSION} -m "new tag"
-	git push --tags
+help: ## Display this help message
+	@printf "$(BOLD)Usage:$(RESET)\n"
+	@printf "  make $(BLUE)<target>$(RESET)\n\n"
+	@printf "$(BOLD)Targets:$(RESET)\n"
+	@awk 'BEGIN {FS = ":.*##"; printf ""} /^[a-zA-Z_-]+:.*?##/ { printf "  $(BLUE)%-15s$(RESET) %s\n", $$1, $$2 } /^##@/ { printf "\n$(BOLD)%s$(RESET)\n", substr($$0, 5) }' $(MAKEFILE_LIST)
