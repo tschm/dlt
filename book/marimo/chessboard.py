@@ -14,11 +14,12 @@ __generated_with = "0.15.3"
 app = marimo.App()
 
 with app.setup:
-    pass
+    import marimo as mo
+    from mod import Mod
 
 
 @app.cell(hide_code=True)
-def _(mo):
+def _():
     mo.md(
         r"""
         # Remember the grains on the Chessboard
@@ -59,7 +60,7 @@ def _():
 
 
 @app.cell
-def _(Mod):
+def _():
     Mod(11, 5)
     return
 
