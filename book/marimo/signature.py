@@ -1,3 +1,13 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "marimo==0.15.3",
+#     "hashlib",
+#     "fastecdsa==2.1.5",
+#     "mod==0.3.0"
+# ]
+# ///
+
 import marimo
 
 __generated_with = "0.15.3"

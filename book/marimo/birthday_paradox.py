@@ -1,3 +1,12 @@
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "marimo==0.15.3",
+#     "numpy==2.2.3",
+#     "matplotlib>=3.7.0"
+# ]
+# ///
+
 import marimo
 
 __generated_with = "0.15.3"
@@ -18,7 +27,7 @@ def _():
 def _(mo):
     mo.md(
         r"""
-        We are solving the birthday problem using a Monte-Carlo simulation, e.g. given a class with $m$ members we run $n$ experiments and count those of them with duplicates. 
+        We are solving the birthday problem using a Monte-Carlo simulation, e.g. given a class with $m$ members we run $n$ experiments and count those of them with duplicates.
         """
     )
     return
