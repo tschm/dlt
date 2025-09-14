@@ -13,6 +13,7 @@ app = marimo.App()
 
 with app.setup:
     from mod import Mod
+    import marimo as mo
 
 @app.cell(hide_code=True)
 def _(mo):
@@ -36,12 +37,11 @@ def _(c):
     return
 
 
-app._unparsable_cell(
-    r"""
-    ??hex
-    """,
-    name="_"
-)
+@app.cell
+def _():
+    # Display hexadecimal representation
+    print("Hexadecimal representation:")
+    return
 
 
 @app.cell

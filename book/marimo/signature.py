@@ -11,19 +11,16 @@ import marimo
 __generated_with = "0.15.3"
 app = marimo.App()
 
-
-@app.cell
-def _():
+with app.setup:
     import hashlib
 
     from fastecdsa import keys
     from fastecdsa.curve import secp256k1 as curve
     from mod import Mod
-    return Mod, curve, hashlib, keys
 
 
 @app.cell
-def _(hashlib):
+def _():
     # every message needs to be hashed into a number
     def encryptstring(hashstr):
         """Convert a string message into a numeric hash value.
@@ -39,7 +36,7 @@ def _(hashlib):
 
 
 @app.cell
-def _(curve, keys):
+def _():
     # The private key is a random number from [ 1 , p − 1 ] where
     # p is the order of the underlying Galoisfield
     privatekey = keys.gen_private_key(curve)
@@ -50,7 +47,7 @@ def _(curve, keys):
 
 
 @app.cell
-def _(curve):
+def _():
     # There are n solutions on the elliptic curve
     # including the point at ”infinity”
     n = curve.q
@@ -61,7 +58,7 @@ def _(curve):
 
 
 @app.cell
-def _(curve, keys):
+def _():
     # nonce
     i = keys.gen_private_key(curve)
     print(type(i))
@@ -71,7 +68,7 @@ def _(curve, keys):
 
 
 @app.cell
-def _(Mod, P, encryptstring, i, message, n, privatekey):
+def _(P, encryptstring, i, message, n, privatekey):
     # compute the signature
     r = Mod(P.x, n)
     inv_i = Mod(i, n).inverse
@@ -81,7 +78,7 @@ def _(Mod, P, encryptstring, i, message, n, privatekey):
 
 
 @app.cell
-def _(Mod, encryptstring, message, n, r, s):
+def _(encryptstring, message, n, r, s):
     # The sender transmits (r,s) , the clear message and his public key
     # s depends on the private key and the hashcode of the message.
     # However it is not possible to extract the private key from s
@@ -94,7 +91,7 @@ def _(Mod, encryptstring, message, n, r, s):
 
 
 @app.cell
-def _(curve, publickey, r, u1, u2):
+def _(publickey, r, u1, u2):
     # addition of two residue classes and multiplication with Point
     (curve.G * u1._value + publickey * u2._value).x == r
     return
