@@ -11,31 +11,23 @@ import marimo
 __generated_with = "0.15.3"
 app = marimo.App()
 
+with app.setup:
+    from fastecdsa import curve, keys
+    import marimo as mo
+
 
 @app.cell
 def _():
-    from fastecdsa import curve, keys
-    return curve, keys
-
-
-@app.cell
-def _(curve, keys):
     # generate a private key!
     private_key = keys.gen_private_key(curve.P521)
     return (private_key,)
 
 
 @app.cell
-def _(curve, keys, private_key):
+def _(private_key):
     public_key = keys.get_public_key(private_key, curve.P521)
     return (public_key,)
 
-
-@app.cell
-def _(private_key):
-    # The private key is an integer
-    private_key
-    return
 
 
 @app.cell
@@ -46,7 +38,7 @@ def _(public_key):
 
 
 @app.cell
-def _(curve, private_key):
+def _(private_key):
     # The public key is the nth of an elliptic curve where n is the private key
     private_key * curve.P521.G
     return

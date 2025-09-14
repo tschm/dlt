@@ -11,12 +11,9 @@ import marimo
 __generated_with = "0.15.3"
 app = marimo.App()
 
-
-@app.cell
-def _():
+with app.setup:
     import hashlib
-    return (hashlib,)
-
+    import marimo as mo
 
 @app.cell
 def _():
@@ -25,7 +22,7 @@ def _():
 
 
 @app.cell
-def _(hashlib, x):
+def _(x):
     hashlib.sha256(x.encode()).hexdigest()
     return
 
