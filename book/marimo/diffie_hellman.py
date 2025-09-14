@@ -12,12 +12,12 @@ import marimo
 __generated_with = "0.15.3"
 app = marimo.App()
 
+with app.setup:
+    import numpy as np
+    import pandas as pd
 
 @app.cell
 def _():
-    import numpy as np
-
-
     class Person:
         """Represents a participant in the Diffie-Hellman key exchange protocol."""
 
@@ -28,7 +28,7 @@ def _():
                 n: Upper bound for the random secret (exclusive)
             """
             self.__secret = np.random.choice(np.arange(1, n))
-    return Person, np
+    return Person
 
 
 @app.cell
@@ -44,13 +44,13 @@ def _(Person):
 
 
 @app.cell
-def _(np):
+def _():
     np.random.choose(5)
     return
 
 
 @app.cell
-def _(np):
+def _():
     np.random.choice(np.arange(1, 5))
     return
 
@@ -64,9 +64,7 @@ def _():
 
 
 @app.cell
-def _(np, p):
-    import pandas as pd
-
+def _(p):
     index = np.arange(0, p + 1)
     a = pd.DataFrame(index=index, data=3, columns=["n"])
     a
@@ -86,7 +84,7 @@ def _(a):
 
 
 @app.cell
-def _(a, np):
+def _(a):
     a["n^power"] = np.power(a["n"], a["power"])
     return
 
@@ -98,7 +96,7 @@ def _(a):
 
 
 @app.cell
-def _(a, np):
+def _(a):
     a["n^power mod power"] = np.mod(a["n^power"], 7)
     return
 

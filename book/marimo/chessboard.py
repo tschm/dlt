@@ -11,6 +11,8 @@ import marimo
 __generated_with = "0.15.3"
 app = marimo.App()
 
+with app.setup:
+    from mod import Mod
 
 @app.cell(hide_code=True)
 def _(mo):
@@ -55,21 +57,10 @@ def _():
 
 
 @app.cell
-def _():
-    from mod import Mod
-    return (Mod,)
-
-
-@app.cell
 def _(Mod):
     Mod(11, 5)
     return
 
-
-@app.cell
-def _():
-    import marimo as mo
-    return (mo,)
 
 
 if __name__ == "__main__":
