@@ -5,7 +5,5 @@
 !work
 !requirements.txt
 
-**/nonpublic
 **/__pycache__
 **/*.pyc
-.ipynb_checkpoints
