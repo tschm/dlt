@@ -23,8 +23,8 @@ permissions:
   contents: write  # Needed to create releases
 
 env:
-  TEMPLATE_REPO: 'tschm/latex'
-  TEMPLATE_BRANCH: 'main'
+  TEMPLATE_REPO: 'tschm/.config-templates'
+  TEMPLATE_BRANCH: '77-action-with-explicit-devcontainer-copy'
   TARGET_BRANCH: 'sync/update'
 
 jobs:
@@ -49,9 +49,13 @@ jobs:
           commit-message: "chore: sync template files"
           include: |
             .github
-            templates
-            .gitignore
-            .markdownlint.yaml
+            taskfiles
+            tests
             .editorconfig
+            .gitignore
             .pre-commit-config.yaml
+            CODE_OF_CONDUCT.md
+            CONTRIBUTING.md
             Makefile
+            ruff.toml
+            Taskfile.yml
